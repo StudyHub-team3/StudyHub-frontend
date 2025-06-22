@@ -11,7 +11,7 @@ const Button = ({ children, onClick }: ButtonProps) => {
     <button
       onClick={onClick}
       style={{outline:"none"}}
-      className="h-[81px] px-[60px] rounded-[40px] bg-[#FFE095] transition-all text-button-primary"
+      className="h-[81px] px-[35px] rounded-[40px] bg-[#FFE095] transition-all text-button-primary"
     >
       {children}
     </button>

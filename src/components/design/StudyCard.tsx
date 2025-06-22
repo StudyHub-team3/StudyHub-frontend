@@ -15,7 +15,7 @@ interface StudyCardProps {
 const StudyCard = ({ title, description, tags, mentorCurrent, mentorTotal, menteeCurrent, menteeTotal, onClick }: StudyCardProps) => {
   return (
     <div
-      className="w-full max-w-[382px] h-[282px] bg-[#FEF0E1] rounded-[20px] px-[23px] py-[30px] shadow cursor-pointer hover:shadow-md transition font-sans"      onClick={onClick}
+      className="w-[382px] h-[282px] bg-[#FEF0E1] rounded-[20px] px-[23px] py-[30px] shadow cursor-pointer hover:shadow-md transition font-sans"      onClick={onClick}
     >
       <div className="flex items-center gap-[15px] mb-[10px]">
         <div className="text-groupname">{title}</div>
