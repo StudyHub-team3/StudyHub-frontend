@@ -1,72 +1,72 @@
-@font-face {
-  font-family: 'Pretendard';
-  src: url('../assets/fonts/Pretendard-Light.woff2') format('woff2');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
+/* 시스템 폰트: Segoe UI */
+/* Tailwind에서 사용할 sans 폰트를 Segoe UI로 설정해야 함 */
 
-@font-face {
-  font-family: 'Pretendard';
-  src: url('../assets/fonts/Pretendard-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Pretendard';
-  src: url('../assets/fonts/Pretendard-SemiBold.woff2') format('woff2');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Pretendard';
-  src: url('../assets/fonts/Pretendard-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* 텍스트 유틸리티 클래스 */
 .text-title {
-  @apply font-sans font-bold text-[65px] text-text-main;
+  font-family: 'Apple SD Gothic Neo', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 65px;
+  color: #525252;
 }
 
 .text-subtitle {
-  @apply font-sans font-semibold text-[35px] text-text-main;
+  font-family: 'Apple SD Gothic Neo', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 35px;
+  color: #525252;
 }
 
 .text-groupname {
-  @apply font-sans font-semibold text-[30px] text-text-main;
+  font-family: 'Apple SD Gothic Neo', system-ui, sans-serif;
+  font-weight: 1000;
+  font-size: 30px;
+  color: #525252;
 }
 
 .text-description {
-  @apply font-sans font-normal text-[16px] text-text-main;
+  font-family: 'Apple SD Gothic Neo', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 25px;
+  color: #525252;
 }
 
 .text-caption {
-  @apply font-sans font-light text-[14px] text-text-main;
+  font-family: 'Apple SD Gothic Neo', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: #FFA61E;
 }
 
 .text-timestamp {
-  @apply font-sans font-normal text-[23px] text-gray-caption;
+  font-family: 'Apple SD Gothic Neo', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 23px;
+  color: #9ca3af;
 }
 
 .text-label {
-  @apply font-sans font-normal text-[18px] text-gray-label;
+  font-family: 'Apple SD Gothic Neo', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: #6b7280;
 }
 
 .text-button-primary {
-  @apply font-sans font-bold text-[35px] text-white;
+  font-family: 'Apple SD Gothic Neo', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 35px;
+  color: #ffffff;
 }
 
 .text-button-secondary {
-  @apply font-sans font-bold text-[16px] text-text-main;
+  font-family: 'Apple SD Gothic Neo', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #525252;
 }
 
 .text-field {
-  @apply font-sans font-normal text-[16px] text-input placeholder:text-input;
+  font-family: 'Apple SD Gothic Neo', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #9E9E9E;
 }

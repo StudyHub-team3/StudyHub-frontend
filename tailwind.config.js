@@ -3,6 +3,7 @@ export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
+    "./src/styles/fonts.css",
   ],
   theme: {
     container: {
@@ -18,7 +19,7 @@ export default {
         primary: "#FFCC80",          // 헤더 배경
         "text-main": "#525252",     // 기본 텍스트
         input: "#9E9E9E",           // 입력창 배경/텍스트
-        card: "#9E9E9E",            // 스터디카드 배경
+        card: "#FEF0E1",            // 스터디카드 배경
         confirm: "#82B7F5",         // 확인 버튼
         cancel: "#FF978C",          // 취소 버튼
         background: "#FAFAFA",      // 전체 배경
@@ -28,7 +29,7 @@ export default {
         "hover-primary": "#e68c0f"  // hover 상태용
       },
       fontFamily: {
-        sans: ['Pretendard', 'sans-serif'],
+        sans: ['Apple SD Gothic Neo', 'system-ui', 'sans-serif']
       },
     },
   },

@@ -13,7 +13,7 @@ html {
 }
 
 body {
-  font-family: system-ui, sans-serif;
+  font-family: 'Apple SD Gothic Neo', system-ui, sans-serif;
   background-color: white;
   color: #1e1e1e;
   line-height: 1.5;
@@ -158,6 +158,6 @@ button {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    font-family: 'Apple SD Gothic Neo', system-ui, sans-serif;
   }
 }
