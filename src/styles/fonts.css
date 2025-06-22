@@ -1,0 +1,72 @@
+@font-face {
+  font-family: 'Pretendard';
+  src: url('../assets/fonts/Pretendard-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('../assets/fonts/Pretendard-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('../assets/fonts/Pretendard-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('../assets/fonts/Pretendard-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 텍스트 유틸리티 클래스 */
+.text-title {
+  @apply font-sans font-bold text-[65px] text-text-main;
+}
+
+.text-subtitle {
+  @apply font-sans font-semibold text-[35px] text-text-main;
+}
+
+.text-groupname {
+  @apply font-sans font-semibold text-[30px] text-text-main;
+}
+
+.text-description {
+  @apply font-sans font-normal text-[16px] text-text-main;
+}
+
+.text-caption {
+  @apply font-sans font-light text-[14px] text-text-main;
+}
+
+.text-timestamp {
+  @apply font-sans font-normal text-[23px] text-gray-caption;
+}
+
+.text-label {
+  @apply font-sans font-normal text-[18px] text-gray-label;
+}
+
+.text-button-primary {
+  @apply font-sans font-bold text-[35px] text-white;
+}
+
+.text-button-secondary {
+  @apply font-sans font-bold text-[16px] text-text-main;
+}
+
+.text-field {
+  @apply font-sans font-normal text-[16px] text-input placeholder:text-input;
+}
