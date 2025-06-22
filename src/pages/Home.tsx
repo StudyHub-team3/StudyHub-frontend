@@ -2,9 +2,9 @@
 // 메인 홈 화면 페이지
 
 import { useState } from "react";
-import Button from "@/components/design/Button";
-import StudyCard from "@/components/design/StudyCard";
-import Header from "@/components/design/Header"
+import Button from "@/components/common/Button";
+import StudyCard from "@/components/common/StudyCard";
+import Header from "@/components/common/Header"
 import dummyStudyList from "@/data/dummyStudyList";
 import { Category } from "@/constants/categories";
 import {
