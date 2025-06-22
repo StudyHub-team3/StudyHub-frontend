@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.text-title {
+  font-family: 'Apple SD Gothic Neo', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 65px;
+  color: #525252;
+}
+
+.text-subtitle {
+  font-family: 'Apple SD Gothic Neo', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 35px;
+  color: #525252;
+}
+
+.text-groupname {
+  font-family: 'Apple SD Gothic Neo', system-ui, sans-serif;
+  font-weight: 1000;
+  font-size: 30px;
+  color: #525252;
+}
+
+.text-description {
+  font-family: 'Apple SD Gothic Neo', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  color: #525252;
+}
+
+.text-caption {
+  font-family: 'Apple SD Gothic Neo', system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  color: #FFA61E;
+}
+
+.text-timestamp {
+  font-family: 'Apple SD Gothic Neo', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 23px;
+  color: #9ca3af;
+}
+
+.text-label {
+  font-family: 'Apple SD Gothic Neo', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: #6b7280;
+}
+
+.text-button-primary {
+  font-family: 'Apple SD Gothic Neo', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 35px;
+  color: #ffffff;
+}
+
+.text-button-secondary {
+  font-family: 'Apple SD Gothic Neo', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #525252;
+}
+
+.text-field {
+  font-family: 'Apple SD Gothic Neo', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #9E9E9E;
+}

@@ -1,11 +1,15 @@
+// src/App.tsx
+
 import { BrowserRouter } from 'react-router-dom'
 import AppRoutes from '@/router'
 
 function App() {
   return (
-    <BrowserRouter>
-      <AppRoutes />
-    </BrowserRouter>
+    <div className="min-h-screen bg-background text-text-main font-sans">
+      <BrowserRouter>
+        <AppRoutes />
+      </BrowserRouter>
+    </div>
   )
 }
 
