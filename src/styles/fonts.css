@@ -1,5 +1,6 @@
-/* 시스템 폰트: Segoe UI */
-/* Tailwind에서 사용할 sans 폰트를 Segoe UI로 설정해야 함 */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 .text-title {
   font-family: 'Apple SD Gothic Neo', system-ui, sans-serif;
@@ -31,7 +32,7 @@
 
 .text-caption {
   font-family: 'Apple SD Gothic Neo', system-ui, sans-serif;
-  font-weight: 700;
+  font-weight: 800;
   font-size: 20px;
   color: #FFA61E;
 }

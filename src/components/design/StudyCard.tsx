@@ -15,10 +15,9 @@ interface StudyCardProps {
 const StudyCard = ({ title, description, tags, mentorCurrent, mentorTotal, menteeCurrent, menteeTotal, onClick }: StudyCardProps) => {
   return (
     <div
-      className="bg-card p-6 rounded-lg shadow cursor-pointer hover:shadow-md transition font-sans"
-      onClick={onClick}
+      className="w-[382px] h-[282px] bg-[#FFF7E0] rounded-[20px] p-[30px] shadow cursor-pointer hover:shadow-md transition font-sans"      onClick={onClick}
     >
-      <div className="flex justify-between items-start">
+      <div className="flex items-center gap-[15px] mb-[10px]">
         <div className="text-groupname">{title}</div>
         {tags.length > 0 && (
           <span className="text-caption">
@@ -26,13 +25,13 @@ const StudyCard = ({ title, description, tags, mentorCurrent, mentorTotal, mente
           </span>
         )}
       </div>
-      <div className="flex items-center gap-2 text-label mt-1">
+      <div className="flex items-center gap-[5px] text-label mb-[15px]">
         <span>👤</span>
-        <span>멘토 {mentorCurrent}/{mentorTotal}</span>
+        <span className="ml-2">멘토 {mentorCurrent}/{mentorTotal}</span>
         <span>·</span>
         <span>멘티 {menteeCurrent}/{menteeTotal}</span>
       </div>
-      <div className="text-description mt-2 line-clamp-2">
+      <div className="text-description mt-4 line-clamp-5">
         {description}
       </div>
     </div>

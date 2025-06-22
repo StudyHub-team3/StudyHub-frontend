@@ -3,7 +3,7 @@ export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
-    "./src/styles/fonts.css",
+    "./src/styles/**/*.{css}",
   ],
   theme: {
     container: {
