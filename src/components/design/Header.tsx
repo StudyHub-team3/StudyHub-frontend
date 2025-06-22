@@ -2,13 +2,14 @@ import React from "react";
 
 const Header = () => {
   return (
-    <header className="w-full h-[70px] #FFCC80 flex items-center justify-between px-[24px] shadow-md font-sans box-border overflow-x-hidden max-w-full">
-      <div className="text-[24px] font-bold text-text-main">StudyHub</div>
-      <nav className="flex gap-[20px] items-center text-[16px] text-text-main">
-        <a href="/studies">스터디 목록</a>
-        <a href="/mypage">마이페이지</a>
-        <button className="bg-button text-white px-4 py-1 rounded">로그인</button>
-      </nav>
+    <header className="w-full h-[80px] bg-[#FFCC80] flex items-center justify-between px-[24px] shadow-md font-sans box-border overflow-x-hidden">
+      <div className="flex items-center gap-2">
+        <img src="/logo.svg" alt="logo" className="h-[60px] w-auto" />
+      </div>
+      <div className="flex items-center gap-[25px] pr-[25px]">
+        <img src="/bell.svg" alt="bell" className="w-[43px] h-[43px]" />
+        <img src="/profile.svg" alt="profile" className="w-[43px] h-[43px]" />
+      </div>
     </header>
   );
 };
