@@ -7,7 +7,7 @@ import Header from "@/components/design/Header"
 
 export default function StudyList() {
   return (
-    <div className="min-h-screen w-full max-w-screen overflow-x-hidden flex flex-col bg-white">
+  <div className="w-full flex justify-center">  
   <Header />
   <div className="pt-6 px-4">
     <div className="w-full flex flex-wrap justify-center gap-6 mt-6">
