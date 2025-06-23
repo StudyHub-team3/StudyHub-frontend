@@ -19,7 +19,7 @@ const StudyCard = ({ title, description, category, mentorCurrent, mentorTotal, m
     >
       <div className="px-[23px] py-[30px] flex flex-col h-full justify-between">
         <div className="mb-[10px]">
-          <div className="text-groupname truncate">{title}</div>
+          <div className="text-groupname truncate">{title.trim() ? title : "DEFAULT TITLE"}</div>
           {category && (
             <div className="text-caption text-left text-primary font-bold leading-tight mt-[6px]">
               {category}

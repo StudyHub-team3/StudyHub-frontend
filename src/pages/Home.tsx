@@ -1,7 +1,8 @@
 // pages/Home.tsx
 // 메인 홈 화면 페이지
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Button from "@/components/common/Button";
 import StudyCard from "@/components/common/StudyCard";
@@ -15,18 +16,46 @@ import {
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
 
+
+type Study = {
+  id: number
+  groupName: string
+  description: string
+  category: string
+  mentorCount: number
+  maxMentor: number
+  menteeCount: number
+  maxMentee: number
+}
+
 export default function Home() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [studies, setStudies] = useState<any>([])
+
+  const [loading, setLoading] = useState(true);
   const [searchKeyword, setSearchKeyword] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const categories = ["전체", ...Object.values(Category)];
   const navigate = useNavigate();
 
-  const filteredStudyList = dummyStudyList.filter((study) => {
-    const matchKeyword = searchKeyword === "" || study.title.toLowerCase().includes(searchKeyword.toLowerCase());
-    const matchCategory = selectedCategory === "" || study.category === selectedCategory;
-    return matchKeyword && matchCategory;
-  });
+  useEffect(() => {
+    const fetchStudies = async () => {
+      try {
+        const response = await fetch("http://localhost:8080/api/studies");
+        
+        const { data } = await response.json();
+        setStudies(data);
+        setLoading(false)
+      } catch (error) {
+        console.error("❌ Fetch error:", error);
+      }
+    };
+    console.log("start fetching..");
+    
+    fetchStudies(); // ✅ useEffect 내부에서 async 함수를 따로 선언하고 호출
+  }, []);
+
+
+  
 
   return (
     <>
@@ -83,25 +112,33 @@ export default function Home() {
             </DropdownMenu>
           </div>
         </div>
-        <div className="grid grid-cols-3 sm:grid-cols-2 lg:grid-cols-3 gap-[32px] py-[20px] px-[20px] sm:px-[40px] lg:px-[80px]">
-          {filteredStudyList.map((study) => (
+        {loading ? <div className="w-full flex justify-center items-center text-3xl font-semibold mt-32 ">LOADING...</div> 
+        : 
+              <div className="grid grid-cols-3 sm:grid-cols-2 lg:grid-cols-3 gap-[32px] py-[20px] px-[20px] sm:px-[40px] lg:px-[80px]">
+          {studies.map((study: Study) => {
+            const {id, groupName, description, category, maxMentee, menteeCount, maxMentor, mentorCount} = study
+            return (
+      
             <div
-              key={study.id}
-              onClick={() => navigate(`/studies/${study.id}`)}
+              key={id}
+              onClick={() => navigate(`/studies/${id}`)}
               className="cursor-pointer"
             >
               <StudyCard
-                title={study.title}
-                description={study.description}
-                category={study.category}
-                mentorCurrent={study.mentorCurrent}
-                mentorTotal={study.mentorTotal}
-                menteeCurrent={study.menteeCurrent}
-                menteeTotal={study.menteeTotal}
+                title={groupName}
+                description={description}
+                category={category}
+                mentorCurrent={mentorCount}
+                mentorTotal={maxMentor}
+                menteeCurrent={menteeCount}
+                menteeTotal={maxMentee}
               />
             </div>
-          ))}
+          )
+          })}
         </div>
+        }
+  
       </div>
     </>
   );
