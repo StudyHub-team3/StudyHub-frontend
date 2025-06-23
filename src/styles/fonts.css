@@ -11,9 +11,16 @@
 
 .text-subtitle {
   font-family: 'Apple SD Gothic Neo', system-ui, sans-serif;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 35px;
-  color: #525252;
+  color: #9C9C9C;
+}
+
+.text-subsubtitle{
+  font-family: 'Apple SD Gothic Neo', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 33px;
+  color: #606060;
 }
 
 .text-formtitle {
@@ -30,6 +37,13 @@
   color: #525252;
 }
 
+.text-tag{
+  font-family: 'Apple SD Gothic Neo', system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 30px;
+  color: #FFA61E;
+}
+
 .text-groupname {
   font-family: 'Apple SD Gothic Neo', system-ui, sans-serif;
   font-weight: 1000;
@@ -39,7 +53,7 @@
 
 .text-description {
   font-family: 'Apple SD Gothic Neo', system-ui, sans-serif;
-  font-weight: 400;
+  font-weight: 200;
   font-size: 22px;
   color: #525252;
 }
@@ -67,7 +81,7 @@
 
 .text-button-primary {
   font-family: 'Apple SD Gothic Neo', system-ui, sans-serif;
-  font-weight: 700;
+  font-weight: 900;
   font-size: 35px;
   color: #ffffff;
 }
