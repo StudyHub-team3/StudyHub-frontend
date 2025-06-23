@@ -81,8 +81,9 @@ export default function StudyDetail() {
             <Button>JOIN</Button>
           ) : (
             <>
-              <Button onClick={() => navigate(`/studies/${study.id}/board`)}> BOARD </Button>
-              <Button onClick={() => navigate(`/studies/${study.id}/chat`)}>👨🏻‍💻💬</Button>
+              <Button onClick={() => navigate(`/studies/${study.id}/board`)}>BOARD</Button>
+              <Button onClick={() => navigate(`/studies/${study.id}/chat`)}>💬</Button>
+              <Button onClick={() => navigate(`/studies/${study.id}/edit`)}>✏️</Button>
             </>
           )}
         </div>
