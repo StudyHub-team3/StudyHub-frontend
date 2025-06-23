@@ -14,6 +14,8 @@ import EditProfile from "@/pages/mypage/EditProfile"
 import EditStudy from "@/pages/studies/study/EditStudy"
 import CreatePost from "@/pages/studies/study/board/CreatePost"
 import PostDetail from "@/pages/studies/study/board/PostDetail"
+//게시판 수정 페이지 추가
+import UpdatePost from "@/pages/studies/study/board/UpdatePost";
 import Notification from "@/pages/Notification"
 
 export default function AppRoutes() {
@@ -33,6 +35,8 @@ export default function AppRoutes() {
       <Route path="/studies/:id/board" element={<PostList />} />
       <Route path="/studies/:id/board/create" element={<CreatePost />} />
       <Route path="/studies/:id/board/:postId" element={<PostDetail />} />
+      //게시판 수정 페이지 추가
+      <Route path="/studies/:id/board/:boardId/update" element={<UpdatePost />} />
 
       <Route path="/notifications" element={<Notification />} />
 
