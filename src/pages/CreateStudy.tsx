@@ -83,7 +83,15 @@ export default function CreateStudy() {
                     <FormLabel className="text-formtitle">🗂️ 카테고리</FormLabel>
                     <div className="h-[20px]" />
                     <FormControl>
-                      <Input {...field} className="h-[50px] bg-white rounded-[20px] border-none text-form pl-[16px]" />
+                      <select
+                        {...field}
+                        className="appearance-none h-[50px] bg-white rounded-[20px] border-none text-form pl-[16px]"
+                      >
+                        <option value="">카테고리를 선택하세요</option>
+                        {Object.entries(Category).map(([key, value]) => (
+                          <option key={key} value={value}>{value}</option>
+                        ))}
+                      </select>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
