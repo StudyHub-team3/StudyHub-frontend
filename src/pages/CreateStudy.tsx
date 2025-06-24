@@ -1,6 +1,7 @@
 "use client"
 
 import { useForm } from "react-hook-form"
+import api from "@/lib/axios"
 import {
   Form,
   FormField,
@@ -13,6 +14,8 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import Header from "@/components/common/Header";
 import Button from "@/components/common/Button";
+import { data } from "react-router-dom"
+import { Category } from "@/constants/categories"
 
 export default function CreateStudy() {
   const form = useForm({
@@ -24,6 +27,26 @@ export default function CreateStudy() {
       description: "",
     },
   })
+  const { handleSubmit } = form;
+
+  const onSubmit = async(data:any) => {
+    try{
+      const response = await api.post("/api/studies", {
+        groupName: data.name,
+        category: data.category,
+        maxMentor: Number(data.mentorCount),
+        maxMentee:Number(data.menteeCount),
+        description: data.description,
+        endDate: "2025-07-31",
+      })
+
+      alert("스터디가 생성되었습니다!")
+      console.log(response.data)
+    } catch (error){
+      console.error("스터디 생성 실패", error)
+      alert("생성 중 오류가 발생했습니다.")
+    }
+  }
 
   return (
     <>
@@ -37,7 +60,7 @@ export default function CreateStudy() {
 
         <div className="p-[70px_100px] bg-[#FFF1E7] rounded-[35px] shadow-md">
           <Form {...form}>
-            <form className="space-y-0">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-0">
               <FormField
                 control={form.control}
                 name="name"
@@ -111,7 +134,7 @@ export default function CreateStudy() {
                 )}
               />
               <div className="flex justify-center mt-[70px] mb-[20px]">
-                <Button>생성하기</Button>
+                <Button type="submit">생성하기</Button>
               </div>
             </form>
           </Form>

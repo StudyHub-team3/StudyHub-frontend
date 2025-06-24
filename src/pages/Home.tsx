@@ -2,7 +2,6 @@
 // 메인 홈 화면 페이지
 
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Button from "@/components/common/Button";
 import StudyCard from "@/components/common/StudyCard";
