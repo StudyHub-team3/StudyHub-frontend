@@ -1,15 +1,14 @@
 import React from "react";
-import type { ReactNode } from "react";
+import type { ReactNode, ButtonHTMLAttributes } from "react";
 
-interface ButtonProps {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
-  onClick?: () => void;
 }
 
-const Button = ({ children, onClick }: ButtonProps) => {
+const Button = ({ children, ...props }: ButtonProps) => {
   return (
     <button
-      onClick={onClick}
+      {...props}
       style={{outline:"none"}}
       className="h-[81px] px-[35px] rounded-[40px] bg-[#FFE095] transition-all text-button-primary"
     >
