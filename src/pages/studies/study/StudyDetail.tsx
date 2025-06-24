@@ -3,6 +3,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import Header from "@/components/common/Header";
 import Button from "@/components/common/Button";
 import CategoryTag from "@/components/common/CategoryTag";
+import StudyJoinDialog from "@/components/common/StudyJoinDialog";
+import StudyJoinPendingList from "@/components/common/StudyJoinPendingList";
 
 // 타입 예시
 interface Participant {
@@ -38,7 +40,8 @@ export default function StudyDetail() {
       const mockData: StudyDetail = {
         id: Number(id ?? 0),
         title: "Study Group 1",
-        description: "스터디 그룹 구합니다 소규모로 진행하고싶고\n멘토를 구해봅니다",
+        description:
+          "스터디 그룹 구합니다 소규모로 진행하고싶고\n멘토를 구해봅니다",
         category: "Spring Boot",
         participants: [
           { id: 1, name: "홍길동", role: "MENTOR" },
@@ -46,7 +49,7 @@ export default function StudyDetail() {
           { id: 3, name: "이영희", role: "MENTEE" },
           { id: 4, name: "홍길동", role: "MENTOR" },
           { id: 5, name: "김철수", role: "MENTEE" },
-          { id: 6, name: "이영희", role: "MENTEE" }
+          { id: 6, name: "이영희", role: "MENTEE" },
         ],
         maxParticipant: 4,
       };
@@ -81,23 +84,41 @@ export default function StudyDetail() {
             <Button>JOIN</Button>
           ) : (
             <>
-              <Button onClick={() => navigate(`/studies/${study.id}/board`)}>BOARD</Button>
-              <Button onClick={() => navigate(`/studies/${study.id}/chat`)}>💬</Button>
-              <Button onClick={() => navigate(`/studies/${study.id}/edit`)}>✏️</Button>
+              <Button onClick={() => navigate(`/studies/${study.id}/board`)}>
+                BOARD
+              </Button>
+              <Button onClick={() => navigate(`/studies/${study.id}/chat`)}>
+                💬
+              </Button>
+              <Button onClick={() => navigate(`/studies/${study.id}/edit`)}>
+                ✏️
+              </Button>
+              <StudyJoinDialog
+                trigger={<Button>JOIN</Button>}
+                studyId={Number(id)}
+                studyTitle="test"
+              />
+              <StudyJoinPendingList
+                trigger={<Button>신청자</Button>}
+                studyId={Number(id)}
+              />
             </>
           )}
         </div>
         <div className="mt-[70px] px-[150px]">
-          <h2 className="text-subsubtitle mb-[24px]">
-            🧑‍🤝‍🧑 Participants 
-          </h2>
+          <h2 className="text-subsubtitle mb-[24px]">🧑‍🤝‍🧑 Participants</h2>
           <div className="grid grid-cols-4 gap-[50px]">
             {study.participants.map((p) => (
-              <div key={p.id} className="bg-[#FFF1E7] p-[20px] rounded-[16px] text-center w-[300px] h-[170px] hover:shadow-[0_10px_25px_rgba(0,0,0,0.4)] hover:scale-[1.05] transition-transform duration-300">
+              <div
+                key={p.id}
+                className="bg-[#FFF1E7] p-[20px] rounded-[16px] text-center w-[300px] h-[170px] hover:shadow-[0_10px_25px_rgba(0,0,0,0.4)] hover:scale-[1.05] transition-transform duration-300"
+              >
                 <div className="text-[14px] text-timestamp mb-[8px]">
                   {p.role === "MENTOR" ? "Mentor" : "Mentee"}
                 </div>
-                <div className="mt-[28px] text-groupname text-[24px] font-semibold">{p.name}</div>
+                <div className="mt-[28px] text-groupname text-[24px] font-semibold">
+                  {p.name}
+                </div>
               </div>
             ))}
           </div>
