@@ -2,7 +2,7 @@
 // 스터디 상세 페이지 내 채팅 기능 페이지
 
 import React from 'react';
-import Header from "@/components/design/Header.tsx";
+import Header from "@/components/common/Header.tsx";
 import ChatInput from "@/components/chat/ChatInput.tsx";
 import ChatMessage from "@/components/chat/ChatMessage.tsx";
 import {dummyChatHistory, dummyChatUser} from "@/data/dummyChatHistory.tsx";
