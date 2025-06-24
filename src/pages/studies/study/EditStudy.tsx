@@ -13,6 +13,9 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import Header from "@/components/common/Header";
 import Button from "@/components/common/Button";
+import { useParams, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import api from "@/lib/axios";
 
 export default function EditStudy() {
   const form = useForm({
@@ -21,6 +24,42 @@ export default function EditStudy() {
       description: "",
     },
   });
+
+  const { studyId } = useParams();
+  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const onSubmit = async (values: any) => {
+    try {
+      setIsLoading(true);
+      const res = await api.put(`/api/studies/${studyId}`, {
+        ...values,
+        endDate: "2025-08-15",
+      });
+      alert("수정 성공!");
+      navigate(`/studies/${studyId}`);
+    } catch (err) {
+      alert("수정 실패");
+      console.error(err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const onDelete = async () => {
+    if (!confirm("정말 삭제하시겠습니까?")) return;
+    try {
+      setIsLoading(true);
+      await api.delete(`/api/studies/${studyId}`);
+      alert("삭제 성공!");
+      navigate("/studies");
+    } catch (err) {
+      alert("삭제 실패");
+      console.error(err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <>
@@ -33,7 +72,7 @@ export default function EditStudy() {
       <div className="w-full max-w-[1000px] mx-auto mt-[50px] mb-[50px] px-[20px]">
         <div className="p-[70px_100px] bg-[#FFF1E7] rounded-[35px] shadow-md">
           <Form {...form}>
-            <form className="space-y-0">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-0">
               <FormField
                 control={form.control}
                 name="name"
@@ -63,8 +102,8 @@ export default function EditStudy() {
                 )}
               />
               <div className="flex justify-center mt-[70px] mb-[20px] space-x-4">
-                <Button>수정하기</Button>
-                <Button>삭제하기</Button>
+                <Button type="submit" disabled={isLoading}>수정하기</Button>
+                <Button type="button" onClick={onDelete} disabled={isLoading}>삭제하기</Button>
               </div>
             </form>
           </Form>
