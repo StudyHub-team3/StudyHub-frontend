@@ -39,13 +39,10 @@ export default function Signup() {
         password
       });
 
-      // API 응답 로깅
-      console.log('응답 성공:', response.data);
-
       if (response.data.code === "OK" ) {
         console.log("회원가입 성공!");
 
-        navigate('/');
+        navigate('/login');
       } else {
         throw new Error('회원가입에 실패했습니다.');
       }
