@@ -1,5 +1,5 @@
 // components/layouts/AuthLayout.tsx
-import Header from "@/components/design/Header"; // Header 컴포넌트 경로 확인
+import Header from "@/components/common/Header";
 import type { ReactNode } from "react";
 
 interface AuthLayoutProps {

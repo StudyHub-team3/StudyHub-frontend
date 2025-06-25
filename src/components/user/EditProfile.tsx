@@ -35,7 +35,7 @@ export default function EditProfile({ onModal, onUpdateUserInfo, initialUserInfo
         throw new Error('비밀번호를 입력하세요.');
       }
 
-      const response = await api.put<ApiResponse<UserInfoData>>('/users/my/info', {
+      const response = await api.put<ApiResponse<UserInfoData>>('/api/users/my/info', {
         name,
         phoneNumber,
         password
@@ -71,7 +71,7 @@ export default function EditProfile({ onModal, onUpdateUserInfo, initialUserInfo
           placeholder="이름"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="w-full h-[40px] p-[10px] mb-[18px] border rounded-md focus:outline-none focus:ring-3 focus:ring-orange-400"
+          className="w-full h-[40px] p-[10px] mb-[18px] bg-[#FFFDFD] border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400"
         />
       </div>
       <div className="mb-4">
@@ -81,7 +81,7 @@ export default function EditProfile({ onModal, onUpdateUserInfo, initialUserInfo
           pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
           value={phoneNumber}
           onChange={(e) => setPhoneNumber(e.target.value)}
-          className="w-full h-[40px] p-[10px] mb-[18px] border rounded-md focus:outline-none focus:ring-3 focus:ring-orange-400"
+          className="w-full h-[40px] p-[10px] mb-[18px] bg-[#FFFDFD] border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400"
         />
       </div>
       <div className="mb-4">
@@ -90,7 +90,7 @@ export default function EditProfile({ onModal, onUpdateUserInfo, initialUserInfo
           placeholder="비밀번호"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full h-[40px] p-[10px] mb-[18px] border rounded-md focus:outline-none focus:ring-3 focus:ring-orange-400"
+          className="w-full h-[40px] p-[10px] mb-[18px] bg-[#FFFDFD] border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400"
         />
       </div>
     </ModalWrapper>

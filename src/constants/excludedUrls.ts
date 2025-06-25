@@ -1,5 +1,5 @@
 export const EXCLUDED_ROUTES = [
-  { method: "POST", path: "/users/auth/login" },
-  { method: "POST", path: "/users/auth/register" },
-  { method: "POST", path: "/users/auth/refresh" },
+  { method: "POST", path: "/api/users/auth/login" },
+  { method: "POST", path: "/api/users/auth/register" },
+  { method: "POST", path: "/api/users/auth/refresh" },
 ];
