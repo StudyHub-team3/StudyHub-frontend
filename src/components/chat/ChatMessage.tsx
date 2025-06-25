@@ -18,6 +18,8 @@ interface ChatMessageProps {
     thisChatUserData: StudyMemberInfoResponse;
     chatUserDataList?: StudyMemberInfoResponse[];
     timestamp: Date;
+    isHover: boolean;
+    onClickReply: (replyMessageId: number, replyMessageContent: string, replyMessageAuthorName: string) => void;
 }
 
 const ChatMessage = React.memo((
@@ -27,6 +29,8 @@ const ChatMessage = React.memo((
             thisChatUserData,
             chatUserDataList,
             timestamp,
+            isHover,
+            onClickReply,
         }: ChatMessageProps) => {
         const nav = useNavigate();
 
@@ -58,6 +62,7 @@ const ChatMessage = React.memo((
         const speaker = chatUserDataList?.filter(chatUserData =>
             chatUserData.userId === (chatMessage.data as UserReplyEventResponse).speakerId
         )[0];
+        const userEventEventResponse = chatMessage.data as UserEventEventResponse;
         return (
             <div className="mx-[5px] my-[3px]">
                 {
@@ -90,24 +95,37 @@ const ChatMessage = React.memo((
                                 : <></>
                         }
                         <div className="">
-                            {(chatMessage.data as UserEventEventResponse).content}
+                            {userEventEventResponse.content}
                         </div>
                     </div>
-                    <div className="text-[12px] self-end text-[#8E8E8E] mx-[5px]">
-                        {
-                            timestamp.getHours() + ":" +
-                            (
-                                timestamp.getMinutes() < 10 ?
-                                    (timestamp.getMinutes() == 0 ? "00" : ("0" + timestamp.getMinutes())) : timestamp.getMinutes()
-                            )
-                        }
-                    </div>
+                    {
+                        isHover ?
+                            <div
+                                className="text-[12px] self-end text-black mx-[5px] bg-purple-100 w-[30px] h-[20px] text-center rounded-[10px] hover:cursor-pointer hover:bg-amber-500"
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    onClickReply(userEventEventResponse.studyChatMessageId, userEventEventResponse.content, speaker?.userName ?? "(알 수 없음)")
+                                }}
+                            >
+                                답장
+                            </div>
+                            :
+                            <div className="text-[12px] self-end text-[#8E8E8E] mx-[5px]">
+                                {
+                                    timestamp.getHours() + ":" +
+                                    (
+                                        timestamp.getMinutes() < 10 ?
+                                            (timestamp.getMinutes() == 0 ? "00" : ("0" + timestamp.getMinutes())) : timestamp.getMinutes()
+                                    )
+                                }
+                            </div>
+                    }
                 </div>
             </div>
         );
     }
     , (prev, next) => {
-        return prev.chatMessage.data.studyChatMessageId === next.chatMessage.data.studyChatMessageId;
+        return prev.chatMessage.data.studyChatMessageId === next.chatMessage.data.studyChatMessageId && prev.isHover === next.isHover;
     }
 );
 

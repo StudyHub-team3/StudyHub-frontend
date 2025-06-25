@@ -31,10 +31,18 @@ const ChatPage: React.FC = () => {
     const [userMessage, setUserMessage] = useState<string>("");
     const [messageType, setMessageType] = useState<"USER_MESSAGE" | "USER_REPLY">("USER_MESSAGE");
     const [hasNext, setHasNext] = useState(false);
+    const [hoverIndex, setHoverIndex] = useState<number>();
 
     const [replyMessageId, setReplyMessageId] = useState<number | undefined>();
     const [replyMessageContent, setReplyMessageContent] = useState<string | undefined>();
     const [replyMessageAuthorName, setReplyMessageAuthorName] = useState<string | undefined>();
+
+    const onClickReply = (replyId: number | undefined, replyContent: string | undefined, replyAuthorName: string | undefined) => {
+        setMessageType("USER_REPLY");
+        setReplyMessageId(replyId);
+        setReplyMessageContent(replyContent);
+        setReplyMessageAuthorName(replyAuthorName);
+    }
 
     const scollToBottom = useCallback(() => {
         setTimeout(() => {
@@ -106,18 +114,39 @@ const ChatPage: React.FC = () => {
                 <div
                     className="flex flex-col-reverse h-[calc(100dvh-50px-80px-40px)] border-3 border-b-neutral-300 rounded-[20px] w-[80dvw] m-[20px] justify-self-center">
                     <ChatInput onSubmit={onSubmit} userMessage={userMessage} setUserMessage={setUserMessage}/>
-                    <div className="flex flex-col-reverse overflow-scroll pt-140px" ref={messagesContainerRef}>
+                    {
+                        (replyMessageId && replyMessageContent && replyMessageAuthorName) ?
+                            <div
+                                className="flex flex-col w-full h-[50px] bg-[#9DFF95] py-[5px] px-[15px] rounded-t-[15px]">
+                                <div>
+                                    {replyMessageAuthorName} 에게 답장하기
+                                </div>
+                                <div className="text-[#BEBEBE]">
+                                    {replyMessageContent}
+                                </div>
+                            </div>
+                            : <></>
+                    }
+                    <div className="flex flex-col-reverse overflow-scroll pt-140px" ref={messagesContainerRef}
+                         onClick={() => {
+                             onClickReply(undefined, undefined, undefined);
+                             setMessageType("USER_MESSAGE");
+                         }}>
                         {
                             chatMessages.map((chatMessage, i, array) => {
                                 const timestamp = new Date(chatMessage.timestamp);
                                 return (
-                                    <div className="flex flex-col-reverse" key={i}>
+                                    <div className="flex flex-col-reverse" key={i}
+                                         onMouseEnter={() => setHoverIndex(chatMessage.data.studyChatMessageId)}
+                                         onMouseLeave={() => setHoverIndex(undefined)}>
                                         <ChatMessage
                                             studyId={studyId}
                                             chatMessage={chatMessage}
                                             thisChatUserData={thisChatUserData}
                                             chatUserDataList={studyMembers}
                                             timestamp={timestamp}
+                                            isHover={hoverIndex === chatMessage.data.studyChatMessageId}
+                                            onClickReply={onClickReply}
                                         />
                                         {
                                             i + 1 === array.length || timestamp.getDate() !== new Date(array[i + 1].timestamp).getDate() ?
