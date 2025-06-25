@@ -26,7 +26,7 @@ export default function UserProfileSection({
         e.preventDefault();
 
         try {
-            const response = await api.post<ApiResponse<null>>("/users/auth/logout");
+            const response = await api.post<ApiResponse<null>>("/api/users/auth/logout");
 
             console.log('로그아웃 시도');
 
@@ -79,8 +79,8 @@ export default function UserProfileSection({
 
             </div>
 
-            <div className="flex justify-end px-[10px] cursor-pointer"> 
-                <img src="./delete.svg" className="w-[20px] fill-current text-[#e34949]" onClick={onDeleteUserClick} />
+            <div className="flex justify-end px-[10px]"> 
+                <img src="./delete.svg" className="w-[20px] fill-current text-[#e34949] cursor-pointer" onClick={onDeleteUserClick} />
             </div>
         </div>
     );

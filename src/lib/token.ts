@@ -18,6 +18,11 @@ export function tokenRefresh(access: string, refresh: string) {
     localStorage.setItem('refreshToken', refresh);
 }
 
+export function tokenClear() {
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+}
+
 export function checkLogin() {
     if (validateToken()) {
         return true;
@@ -72,7 +77,7 @@ async function refresh() {
     try {
         const token = getRefreshToken();
 
-        const response = await api.post<ApiResponse<TokenData>>("/users/auth/refresh", {
+        const response = await api.post<ApiResponse<TokenData>>("/api/users/auth/refresh", {
             token
         })
         console.log("토큰 리프레시 요청...");

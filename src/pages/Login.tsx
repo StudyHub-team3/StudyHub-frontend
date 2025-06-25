@@ -25,7 +25,7 @@ export default function Login() {
 
     try {
       // 로그인 API 호출 시 응답 데이터의 타입을 명시합니다.
-      const response = await api.post<ApiResponse<TokenData>>("/users/auth/login", {
+      const response = await api.post<ApiResponse<TokenData>>("/api/users/auth/login", {
         email,
         password,
       });
@@ -58,7 +58,7 @@ export default function Login() {
       <div>
         <input
           type="email"
-          className="w-full h-[40px] p-[10px] mb-[18px] border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400"
+          className="w-full h-[40px] p-[10px] mb-[18px] bg-[#FFFDFD] border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400"
           placeholder="studyhub@studyhub.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -68,7 +68,7 @@ export default function Login() {
       <div>
         <input
           type="password"
-          className="w-full h-[40px] p-[10px] mb-[18px] border rounded-md focus:outline-none focus:ring-3 focus:ring-orange-400"
+          className="w-full h-[40px] p-[10px] mb-[18px] bg-[#FFFDFD] border rounded-md focus:outline-none focus:ring-3 focus:ring-orange-400"
           placeholder="비밀번호"
           value={password}
           onChange={(e) => setPassword(e.target.value)}

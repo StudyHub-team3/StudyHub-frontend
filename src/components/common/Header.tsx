@@ -60,12 +60,6 @@ const Header = () => {
             />
           )}
         </div>
-        <img
-          src="/profile.svg"
-          alt="profile"
-          className="w-[43px] h-[43px] cursor-pointer"
-          onClick={handleProfileClick}
-        />
         {checkLogin() ? (
           <Link to="/mypage">
             <img

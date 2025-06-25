@@ -32,7 +32,7 @@ export default function Signup() {
 
     try {
 
-      const response = await api.post<ApiResponse<null>>("/users/auth/register", {
+      const response = await api.post<ApiResponse<null>>("/api/users/auth/register", {
         email,
         name,
         phoneNumber,
@@ -61,7 +61,7 @@ export default function Signup() {
       <div>
         <input
           type="email"
-          className="w-full h-[40px] p-[10px] mb-[18px] border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400"
+          className="w-full h-[40px] p-[10px] mb-[18px] bg-[#FFFDFD] border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400"
           placeholder="studyhub@studyhub.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -71,7 +71,7 @@ export default function Signup() {
       <div>
         <input
           type="text"
-          className="w-full h-[40px] p-[10px] mb-[18px] border rounded-md focus:outline-none focus:ring-3 focus:ring-orange-400"
+          className="w-full h-[40px] p-[10px] mb-[18px] bg-[#FFFDFD] border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400"
           placeholder="이름"
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -83,7 +83,7 @@ export default function Signup() {
           type="tel"
           pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
           title="010-1234-5678"
-          className="w-full h-[40px] p-[10px] mb-[18px] border rounded-md focus:outline-none focus:ring-3 focus:ring-orange-400"
+          className="w-full h-[40px] p-[10px] mb-[18px] bg-[#FFFDFD] border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400"
           placeholder="전화번호"
           value={phoneNumber}
           onChange={(e) => setPhoneNumber(e.target.value)}
@@ -95,7 +95,7 @@ export default function Signup() {
           type="password"
           pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+\-]).{8,}"
           title="소문자, 대문자, 숫자, 특수문자가 포함된 8자리 이상의 비밀번호"
-          className="w-full h-[40px] p-[10px] mb-[18px] border rounded-md focus:outline-none focus:ring-3 focus:ring-orange-400"
+          className="w-full h-[40px] p-[10px] mb-[18px] bg-[#FFFDFD] border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400"
           placeholder="비밀번호"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -107,7 +107,7 @@ export default function Signup() {
           type="password"
           pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+\-]).{8,}"
           title="소문자, 대문자, 숫자, 특수문자가 포함된 8자리 이상의 비밀번호"
-          className="w-full h-[40px] p-[10px] mb-[18px] border rounded-md focus:outline-none focus:ring-3 focus:ring-orange-400"
+          className="w-full h-[40px] p-[10px] mb-[18px] bg-[#FFFDFD] border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400"
           placeholder="비밀번호 확인" 
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}

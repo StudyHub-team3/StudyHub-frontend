@@ -21,7 +21,7 @@ export default function ConfirmDeleteUser({ onModal }: ConfirmDeleteUserProps) {
       if (password === checkPassword) {
         console.log('회원 탈퇴가 진행됩니다.');
 
-        const response = await api.post<ApiResponse<null>>("/users/auth/delete", {
+        const response = await api.post<ApiResponse<null>>("api/users/auth/delete", {
           password
         });
 
@@ -59,7 +59,7 @@ export default function ConfirmDeleteUser({ onModal }: ConfirmDeleteUserProps) {
           placeholder="비밀번호"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full h-[40px] p-[10px] mb-[18px] border rounded-md focus:outline-none focus:ring-3 focus:ring-orange-400"
+          className="w-full h-[40px] p-[10px] mb-[18px] bg-[#FFFDFD] border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400"
         />
       </div>
       <div className="mb-4">
@@ -68,7 +68,7 @@ export default function ConfirmDeleteUser({ onModal }: ConfirmDeleteUserProps) {
           placeholder="비밀번호 확인"
           value={checkPassword}
           onChange={(e) => setCheckPassword(e.target.value)}
-          className="w-full h-[40px] p-[10px] mb-[18px] border rounded-md focus:outline-none focus:ring-3 focus:ring-orange-400"
+          className="w-full h-[40px] p-[10px] mb-[18px] bg-[#FFFDFD] border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400"
         />
       </div>
     </ModalWrapper>

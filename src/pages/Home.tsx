@@ -4,9 +4,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "@/components/common/Button";
-import StudyCard from "@/components/common/StudyCard";
 import Header from "@/components/common/Header"
-import dummyStudyList from "@/data/dummyStudyList";
 import { Category } from "@/constants/categories";
 import {
   DropdownMenu,
@@ -14,52 +12,19 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
-
-
-type Study = {
-  id: number
-  groupName: string
-  description: string
-  category: string
-  mentorCount: number
-  maxMentor: number
-  menteeCount: number
-  maxMentee: number
-}
+import StudyList from "./studies/study/StudyList";
+import { StudyListType } from "@/constants/studyListType";
 
 export default function Home() {
-  const [studies, setStudies] = useState<any>([])
-
-  const [loading, setLoading] = useState(true);
   const [searchKeyword, setSearchKeyword] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const categories = ["전체", ...Object.values(Category)];
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchStudies = async () => {
-      try {
-        const response = await fetch("http://localhost:8080/api/studies");
-        
-        const { data } = await response.json();
-        setStudies(data);
-        setLoading(false)
-      } catch (error) {
-        console.error("❌ Fetch error:", error);
-      }
-    };
-    console.log("start fetching..");
-    
-    fetchStudies(); // ✅ useEffect 내부에서 async 함수를 따로 선언하고 호출
-  }, []);
-
-
-  
-
   return (
     <>
       <Header />
-      <div className="flex flex-col items-center bg-[#F9F9F9] min-h-screen pt-[100px] gap-[56px] px-[80px]">
+      <div className="flex flex-col items-center bg-[#F9F9F9] min-h-screen py-[100px] gap-[56px] px-[80px]">
         <div className="flex flex-col items-center gap-[8px]">
           <h1 className="text-title">Find a study group!</h1>
           <Button onClick={() => navigate("/create")}>or create one</Button>
@@ -111,33 +76,8 @@ export default function Home() {
             </DropdownMenu>
           </div>
         </div>
-        {loading ? <div className="w-full flex justify-center items-center text-3xl font-semibold mt-32 ">LOADING...</div> 
-        : 
-              <div className="grid grid-cols-3 sm:grid-cols-2 lg:grid-cols-3 gap-[32px] py-[20px] px-[20px] sm:px-[40px] lg:px-[80px]">
-          {studies.map((study: Study) => {
-            const {id, groupName, description, category, maxMentee, menteeCount, maxMentor, mentorCount} = study
-            return (
-      
-            <div
-              key={id}
-              onClick={() => navigate(`/studies/${id}`)}
-              className="cursor-pointer"
-            >
-              <StudyCard
-                title={groupName}
-                description={description}
-                category={category}
-                mentorCurrent={mentorCount}
-                mentorTotal={maxMentor}
-                menteeCurrent={menteeCount}
-                menteeTotal={maxMentee}
-              />
-            </div>
-          )
-          })}
-        </div>
-        }
-  
+
+        <StudyList studyListType={StudyListType.All} />
       </div>
     </>
   );
