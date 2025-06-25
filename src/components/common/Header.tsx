@@ -54,6 +54,7 @@ const Header = () => {
               open={open}
               onClose={() => setOpen(false)}
               anchorRef={bellRef}
+              userId={1} // replace with actual user ID
             />
           )}
         </div>
