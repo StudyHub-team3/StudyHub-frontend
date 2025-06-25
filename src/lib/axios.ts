@@ -49,8 +49,6 @@ api.interceptors.request.use(
         await refreshWithLock(); // refresh된 access 토큰 사용하기 위함
       }
 
-      alert();
-
       // 3. 토큰이 유효하면 헤더에 추가 (갱신된 토큰 포함)
       if (config.headers) {
         const token = getAccessToken();
