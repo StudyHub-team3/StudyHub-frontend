@@ -47,8 +47,8 @@ export default function StudyDetail() {
       const responseData = res.data as { data: StudyDetail };
       const memberList = await api.get(`/api/study-members/members/${id}`);
       const dummyParticipants: Participant[] = [
-        { id: 1, name: "Alice", role: "MENTOR" },
-        { id: 2, name: "Bob", role: "MENTEE" },
+        { id: 1, userName: "Alice", role: "MENTOR" },
+        { id: 2, userName: "Bob", role: "MENTEE" },
       ];
       setStudy({
         ...responseData.data,
