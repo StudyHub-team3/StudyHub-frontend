@@ -13,35 +13,35 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { X } from "lucide-react";
-import axios from "axios";
+import api from "@/lib/axios";
 
 export interface StudyJoinDialogProps {
   trigger: React.ReactNode;
-  studyTitle: string;
+  // studyTitle: string;
   studyId: number;
+  onClose: () => void;
 }
 
 const StudyJoinDialog = ({
   trigger,
   // studyTitle,
   studyId,
+  onClose,
 }: StudyJoinDialogProps) => {
   const [role, setRole] = useState<"MENTOR" | "MENTEE">("MENTOR");
   const [introduction, setIntroduction] = useState("");
   const [open, setOpen] = useState(false);
 
   const handleConfirm = async () => {
-    const result = await axios.post(
-      "http://localhost:8080/api/study-members/join",
-      {
-        studyId,
-        role,
-        comment: introduction,
-      }
-    );
+    const result = await api.post("/api/study-members/join", {
+      studyId,
+      role,
+      comment: introduction,
+    });
 
     if (result && result.status && result.status === 200) {
       setOpen(false);
+      onClose();
     } else {
       alert("신청 오류");
     }
