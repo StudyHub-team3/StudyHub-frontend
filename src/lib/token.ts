@@ -18,6 +18,11 @@ export function tokenRefresh(access: string, refresh: string) {
     localStorage.setItem('refreshToken', refresh);
 }
 
+export function tokenClear() {
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+}
+
 export function checkLogin() {
     if (validateToken()) {
         return true;
