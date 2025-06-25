@@ -33,7 +33,7 @@ export default function MyPage() {
 
     try {
       const response = await api.get<ApiResponse<UserInfoData>>(
-        "/users/my/info"
+        "/api/users/my/info"
       );
 
       if (response.data.code === "OK") {
