@@ -1,4 +1,7 @@
 // components/sections/MyActivitiesSection.tsx
+import { StudyListType } from "@/constants/studyListType";
+import api from "@/lib/axios";
+import StudyList from "@/pages/studies/study/StudyList";
 import { useState } from "react";
 
 interface MyActivitiesSectionProps {
@@ -8,7 +11,7 @@ interface MyActivitiesSectionProps {
 export default function MyActivitiesSection({ initialActiveButton = 0 }: MyActivitiesSectionProps) {
     const [activeButton, setActiveButton] = useState(initialActiveButton);
 
-    const buttonLabels = ['참여 목록', '신청 목록', '작성 글'];
+    const buttonLabels = ['참여 스터디 그룹 리스트'];
 
     const handleClick = (buttonIndex: number) => {
         setActiveButton(buttonIndex);
@@ -17,30 +20,25 @@ export default function MyActivitiesSection({ initialActiveButton = 0 }: MyActiv
     return (
         <>
             <div>
-                <div className="grid grid-cols-3 gap-x-[100px] text-center mx-[50px] my-[30px]">
+                <div className={`grid grid-cols-${buttonLabels.length} gap-x-[100px] text-center mx-[300px] my-[30px]`}>
                     {buttonLabels.map((label, index) => (
-                        <button
+                        <p
                             key={index}
                             className={`
-                            font-bold py-3 px-6 rounded-lg shadow-md
-                            ${activeButton === index
-                                    ? 'bg-[#FDBA74]' // 활성화된 경우
-                                    : 'bg-yellow-400 hover:bg-[#FFCC80]' // 비활성화된 경우
-                                }
+                            font-bold p-[10px] rounded-lg shadow-md 
+                            bg-[#FFFDFD]
                             text-[#525252]
+                            text-[32px]
                         `}
                             onClick={() => handleClick(index)}
                         >
                             {label}
-                        </button>
+                        </p>
                     ))}
                 </div>
 
                 <div className="min-h-[240px] p-[20px]">
-                    {/* 실제 내용을 렌더링하는 부분. 나중에는 동적으로 데이터를 불러와 표시할 수 있습니다. */}
-                    {activeButton === 0 && <p className="text-center text-[#525252]">참여 목록이 현재 활성화되어 있습니다.</p>}
-                    {activeButton === 1 && <p className="text-center text-[#525252]">신청 목록이 현재 활성화되어 있습니다.</p>}
-                    {activeButton === 2 && <p className="text-center text-[#525252]">작성 글이 현재 활성화되어 있습니다.</p>}
+                    <StudyList studyListType={StudyListType.My} />
                 </div>
             </div>
         </>
