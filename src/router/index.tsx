@@ -9,7 +9,6 @@ import StudyDetail from "@/pages/studies/study/StudyDetail"
 import Chat from "@/pages/studies/study/Chat"
 import PostList from "@/pages/studies/study/board/PostList"
 import NotFound from "@/pages/NotFound"
-import EditProfile from "@/pages/mypage/EditProfile"
 import EditStudy from "@/pages/studies/study/EditStudy"
 import CreatePost from "@/pages/studies/study/board/CreatePost"
 import PostDetail from "@/pages/studies/study/board/PostDetail"
@@ -22,7 +21,6 @@ export default function AppRoutes() {
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/mypage" element={<MyPage />} />
-      <Route path="/mypage/edit" element={<EditProfile />} />
 
       <Route path="/create" element={<CreateStudy />} />
       <Route path="/studies/:id" element={<StudyDetail />} />
