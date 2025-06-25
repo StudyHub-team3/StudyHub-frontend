@@ -19,7 +19,7 @@ export default function ConfirmDeleteUser({ onModal }: ConfirmDeleteUserProps) {
 
     try {
       if (password === checkPassword) {
-        alert('회원 탈퇴가 진행됩니다.');
+        console.log('회원 탈퇴가 진행됩니다.');
 
         const response = await api.post<ApiResponse<null>>("/users/auth/delete", {
           password

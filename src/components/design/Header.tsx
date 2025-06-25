@@ -1,4 +1,6 @@
+import { checkLogin } from "@/lib/token";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -8,7 +10,17 @@ const Header = () => {
       </div>
       <div className="flex items-center gap-[25px] pr-[25px]">
         <img src="/bell.svg" alt="bell" className="w-[43px] h-[43px]" />
-        <img src="/profile.svg" alt="profile" className="w-[43px] h-[43px]" />
+
+        {
+          checkLogin() ? 
+            <Link to="/mypage">
+              <img src="/profile.svg" alt="profile" className="w-[43px] h-[43px] cursor-pointer" />
+            </Link>
+            :
+            <Link to="/login">
+              <img src="/login.svg" alt="profile" className="w-[43px] h-[43px] cursor-pointer" />
+            </Link>
+        }
       </div>
     </header>
   );

@@ -18,6 +18,23 @@ export function tokenRefresh(access: string, refresh: string) {
     localStorage.setItem('refreshToken', refresh);
 }
 
+export function checkLogin() {
+    if (validateToken()) {
+        return true;
+    }
+    else {
+        var refreshToken = getRefreshToken();
+
+        if (refreshToken == null) {
+            return false;
+        }
+
+        refreshWithLock();
+
+        return true;
+    }
+}
+
 export function getUserId() {
     try {
         var accessToken = getAccessToken();
