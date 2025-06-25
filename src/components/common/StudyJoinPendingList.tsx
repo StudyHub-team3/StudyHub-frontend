@@ -11,32 +11,30 @@ import {
 import { Button } from "@/components/ui/button";
 import ExpandableText from "./ExpandableText"; // 위에서 만든 컴포넌트를 임포트
 import { X } from "lucide-react";
-import axios from "axios";
+import api from "@/lib/axios";
 
 export interface StudyJoinPendingListProps {
   trigger: React.ReactNode;
   studyId: number;
+  onClose: () => void;
 }
 
 const StudyJoinPendingList = ({
   trigger,
   studyId,
+  onClose,
 }: StudyJoinPendingListProps) => {
   const [fetchData, setFetchData] = useState([]);
   const [open, setOpen] = useState(false);
 
   const fetch = async () => {
-    const data = await axios.get(
-      `http://localhost:8080/api/study-members/requests/${studyId}`
-    );
+    const data = await api.get(`/api/study-members/requests/${studyId}`);
 
     setFetchData((data.data as any).data);
   };
 
   const onAccept = async (memberId: number) => {
-    const result = await axios.patch(
-      `http://localhost:8080/api/study-members/requests/${memberId}`
-    );
+    const result = await api.patch(`/api/study-members/requests/${memberId}`);
 
     if (result && result.status && result.status === 200) {
       await fetch();
@@ -46,15 +44,20 @@ const StudyJoinPendingList = ({
   };
 
   const onReject = async (memberId: number) => {
-    const result = await axios.delete(
-      `http://localhost:8080/api/study-members/requests/${memberId}`
-    );
+    const result = await api.delete(`/api/study-members/requests/${memberId}`);
 
     if (result && result.status && result.status === 200) {
       await fetch();
     } else {
       alert("거절 오류");
     }
+  };
+
+  const handleOpenChange = (isOpen: boolean) => {
+    if (!isOpen) {
+      onClose();
+    }
+    setOpen(isOpen);
   };
 
   useEffect(() => {
@@ -64,7 +67,7 @@ const StudyJoinPendingList = ({
   }, [open]);
 
   return (
-    <Dialog open={open} onOpenChange={setOpen} modal>
+    <Dialog open={open} onOpenChange={handleOpenChange} modal>
       {trigger && <DialogTrigger asChild>{trigger}</DialogTrigger>}
       <DialogContent
         className="h-[600px] max-w-[1000px] bg-[#FFF7E0] px-[35px] py-[25px] rounded-[12px] [&>[data-slot=dialog-close]]:hidden flex flex-col"
