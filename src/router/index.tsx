@@ -4,8 +4,7 @@ import Home from "@/pages/Home"
 import Login from "@/pages/Login"
 import Signup from "@/pages/Signup"
 import MyPage from "@/pages/mypage/MyPage"
-import StudyListPage from "@/pages/studies/StudyList"
-import CreateStudy from "@/pages/studies/CreateStudy"
+import CreateStudy from "@/pages/CreateStudy"
 import StudyDetail from "@/pages/studies/study/StudyDetail"
 import Chat from "@/pages/studies/study/Chat"
 import PostList from "@/pages/studies/study/board/PostList"
@@ -23,8 +22,7 @@ export default function AppRoutes() {
       <Route path="/signup" element={<Signup />} />
       <Route path="/mypage" element={<MyPage />} />
 
-      <Route path="/studies" element={<StudyListPage />} />
-      <Route path="/studies/create" element={<CreateStudy />} />
+      <Route path="/create" element={<CreateStudy />} />
       <Route path="/studies/:id" element={<StudyDetail />} />
       <Route path="/studies/:id/edit" element={<EditStudy />} />
       <Route path="/studies/:id/chat" element={<Chat />} />

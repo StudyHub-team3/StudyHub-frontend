@@ -5,7 +5,7 @@ import { EXCLUDED_ROUTES } from '@/constants/excludedUrls';
 import type { AxiosRequestConfig } from 'axios'; //  TypeScript 컴파일러에게만 사용되는 구문이고, 실제 빌드 결과에는 포함되지 않으므로 런타임 오류가 발생하지 않음
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "http://localhost:3000",
+  baseURL: import.meta.env.VITE_API_URL, // 여기 꼭 VITE_API_URL로 되어 있어야 함
   withCredentials: true,
   timeout: 3000,
   headers: {
