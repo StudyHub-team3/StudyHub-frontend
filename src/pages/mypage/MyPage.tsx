@@ -1,6 +1,6 @@
 // pages/mypage/index.tsx
 // 마이페이지 메인 화면
-import Header from "@/components/design/Header"; // Header 컴포넌트 경로 확인
+import Header from "@/components/common/Header"; // Header 컴포넌트 경로 확인
 import UserProfileSection from "../../components/user/UserProfile"; // 새로 생성한 컴포넌트
 import MyActivitiesSection from "../../components/user/MyActivities"; // 새로 생성한 컴포넌트
 import { useCallback, useEffect, useState } from "react";
