@@ -27,7 +27,7 @@ export default function AppRoutes() {
       <Route path="/create" element={<CreateStudy />} />
       <Route path="/studies/:id" element={<StudyDetail />} />
       <Route path="/studies/:id/edit" element={<EditStudy />} />
-      <Route path="/studies/:id/chat" element={<Chat />} />
+      <Route path="/studies/:id/chat/:userIdString" element={<Chat />} />
       <Route path="/studies/:id/board" element={<PostList />} />
       <Route path="/studies/:id/board/create" element={<CreatePost />} />
       <Route path="/studies/:id/board/:postId" element={<PostDetail />} />
