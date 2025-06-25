@@ -1,4 +1,6 @@
+import { checkLogin } from "@/lib/token";
 import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import NotificationDrawer from "../notification/NotificationDrawer";
 
@@ -64,6 +66,16 @@ const Header = () => {
           className="w-[43px] h-[43px] cursor-pointer"
           onClick={handleProfileClick}
         />
+        {
+          checkLogin() ? 
+            <Link to="/mypage">
+              <img src="/profile.svg" alt="profile" className="w-[43px] h-[43px] cursor-pointer" />
+            </Link>
+            :
+            <Link to="/login">
+              <img src="/login.svg" alt="profile" className="w-[43px] h-[43px] cursor-pointer" />
+            </Link>
+        }
       </div>
     </header>
   );
