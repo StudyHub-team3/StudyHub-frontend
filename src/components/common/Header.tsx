@@ -1,4 +1,4 @@
-import { checkLogin } from "@/lib/token";
+import { checkLogin, getUserId } from "@/lib/token";
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -56,7 +56,7 @@ const Header = () => {
               open={open}
               onClose={() => setOpen(false)}
               anchorRef={bellRef}
-              userId={1} // replace with actual user ID
+              userId={Number(getUserId()) || 0}
             />
           )}
         </div>
@@ -66,16 +66,23 @@ const Header = () => {
           className="w-[43px] h-[43px] cursor-pointer"
           onClick={handleProfileClick}
         />
-        {
-          checkLogin() ? 
-            <Link to="/mypage">
-              <img src="/profile.svg" alt="profile" className="w-[43px] h-[43px] cursor-pointer" />
-            </Link>
-            :
-            <Link to="/login">
-              <img src="/login.svg" alt="profile" className="w-[43px] h-[43px] cursor-pointer" />
-            </Link>
-        }
+        {checkLogin() ? (
+          <Link to="/mypage">
+            <img
+              src="/profile.svg"
+              alt="profile"
+              className="w-[43px] h-[43px] cursor-pointer"
+            />
+          </Link>
+        ) : (
+          <Link to="/login">
+            <img
+              src="/login.svg"
+              alt="profile"
+              className="w-[43px] h-[43px] cursor-pointer"
+            />
+          </Link>
+        )}
       </div>
     </header>
   );
