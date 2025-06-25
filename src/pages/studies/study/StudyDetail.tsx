@@ -3,6 +3,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import Header from "@/components/common/Header";
 import Button from "@/components/common/Button";
 import CategoryTag from "@/components/common/CategoryTag";
+import StudyJoinDialog from "@/components/common/StudyJoinDialog";
+import StudyJoinPendingList from "@/components/common/StudyJoinPendingList";
 import api from "@/lib/axios";
 
 // 타입 예시
@@ -84,20 +86,29 @@ export default function StudyDetail() {
               <Button onClick={() => navigate(`/studies/${id}/board`)}>BOARD</Button>
               <Button onClick={() => navigate(`/studies/${id}/chat`)}>💬</Button>
               <Button onClick={() => navigate(`/studies/${id}/edit`)}>✏️</Button>
+               <StudyJoinDialog
+                trigger={<Button>JOIN</Button>}
+                studyId={Number(id)}
+                studyTitle="test"
+              />
+              <StudyJoinPendingList
+                trigger={<Button>신청자</Button>}
+                studyId={Number(id)}
+              />
             </>
           )}
         </div>
         <div className="mt-[70px] px-[150px]">
-          <h2 className="text-subsubtitle mb-[24px]">
-            🧑‍🤝‍🧑 Participants 
-          </h2>
+          <h2 className="text-subsubtitle mb-[24px]">🧑‍🤝‍🧑 Participants</h2>
           <div className="grid grid-cols-4 gap-[50px]">
             {study.participants?.map((p: Participant) => (
               <div key={p.id} className="bg-[#FFF1E7] p-[20px] rounded-[16px] text-center w-[300px] h-[170px] hover:shadow-[0_10px_25px_rgba(0,0,0,0.4)] hover:scale-[1.05] transition-transform duration-300">
                 <div className="text-[14px] text-timestamp mb-[8px]">
                   {p.role === "MENTOR" ? "Mentor" : "Mentee"}
                 </div>
-                <div className="mt-[28px] text-groupname text-[24px] font-semibold">{p.name}</div>
+                <div className="mt-[28px] text-groupname text-[24px] font-semibold">
+                  {p.name}
+                </div>
               </div>
             ))}
           </div>
