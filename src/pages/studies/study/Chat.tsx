@@ -14,12 +14,17 @@ import {publishChat, useChatClient} from "@/api/chat/chatSock.ts";
 import type {ChatMessageRequest} from "@/api/chat/types/chatReqeust.ts";
 import type {ChatEvent, ChatEventData} from "@/api/chat/types/chatEvent.ts";
 import SystemMessage from "@/components/chat/SystemMessage.tsx";
+import {getUserId} from "@/lib/token.ts";
 
 const ChatPage: React.FC = () => {
-    const {id, userIdString} = useParams(); // TODO userId 어떻게 관리?
+    const {id} = useParams();
     const studyId = Number(id);
-    const userId = Number(userIdString);
     const loadAmount = 10;
+
+    const [userId, setUserId] = useState<number>();
+    useEffect(() => {
+        setUserId(getUserId());
+    }, []);
 
     const [isLoaded, setIsLoaded] = useState(false);
     const messagesContainerRef = useRef<HTMLDivElement>(null);
@@ -69,7 +74,7 @@ const ChatPage: React.FC = () => {
             replyForChatMessageContent: replyMessageContent,
             replyForChatMessageAuthorName: replyMessageAuthorName,
         }
-        publishChat(chatClient, studyChatId, userId, requestBody)
+        publishChat(chatClient, studyChatId, requestBody, userId)
         setUserMessage("");
         setMessageType("USER_MESSAGE");
         setReplyMessageId(undefined);

@@ -81,10 +81,10 @@ export const useChatClient = (
 export const publishChat = (
     socketClient: RefObject<Client>,
     studyChatId: number,
-    userId: number,
     body: ChatMessageRequest,
+    userId?: number,
 ) => {
-    if (socketClient.current && socketClient.current.connected) {
+    if (userId && socketClient.current && socketClient.current.connected) {
         socketClient.current.publish({
             destination: `/sock/chat/app/study-chat/${studyChatId}/send/${userId}`,
             body: JSON.stringify(body)
